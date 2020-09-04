@@ -1,0 +1,6 @@
+no_cuda: False
+
+epochs: 50
+lr: 0.001
+
+batch_size: 32
