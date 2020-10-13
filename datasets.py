@@ -16,7 +16,7 @@ class MyDataset(torch.utils.data.Dataset):
 
 
     def __getitem__(self, idx):
-        sample = {'img': self.dataset[idx][0], 'label': self.dataset[idx][1]}
+        sample = {'img': self.dataset[idx][0].copy(), 'label': self.dataset[idx][1].copy()}
 
         if self.transform:
             sample = self.transform(sample)
