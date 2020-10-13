@@ -31,6 +31,8 @@ class MyModel(object):
 
                         optimizer.zero_grad()
 
+                        output = self.net(img)
+
                         loss = 
 
                         loss.backward()
