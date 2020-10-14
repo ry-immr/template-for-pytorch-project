@@ -5,8 +5,8 @@ import torch
 import torchvision
 import yaml
 
-import datasets
-import models
+from . import datasets
+from . import models
 
 
 def check_yml(d):

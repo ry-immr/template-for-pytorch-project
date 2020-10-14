@@ -5,7 +5,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from tqdm import tqdm
 
-import nets
+from . import nets
 
 
 class MyModel(object):
