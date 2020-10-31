@@ -5,8 +5,8 @@ import torch
 import torchvision
 import yaml
 
-from . import datasets
-from . import models
+import datasets
+import models
 
 
 def check_yml(d):
@@ -58,9 +58,11 @@ def main():
 
 
     elif args.mode=='test':
+        pass
 
 
     elif args.mode=='visualize':
+        pass
 
 
 if __name__ == '__main__':

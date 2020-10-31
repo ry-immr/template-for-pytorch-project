@@ -5,7 +5,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from tqdm import tqdm
 
-from . import nets
+import nets
 
 
 class MyModel(object):
@@ -33,7 +33,7 @@ class MyModel(object):
 
                         output = self.net(img)
 
-                        loss = 
+                        loss = 0
 
                         loss.backward()
                         optimizer.step()
@@ -54,22 +54,10 @@ class MyModel(object):
     def test(self):
         self.net.eval()
         with torch.no_grad():
-
-
-
-
-    def calculate_error(self):
-
-
-
-
-    def calculate_score(self):
-
-
+            pass
 
 
     def visualize(self):
         self.net.eval()
         with torch.no_grad():
-
-
+            pass
