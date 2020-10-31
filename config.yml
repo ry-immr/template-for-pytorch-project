@@ -1,6 +1,6 @@
 no_cuda: False
 
-seed:1
+seed: 1
 
 epochs: 50
 lr: 0.001
