@@ -48,7 +48,7 @@ class MyModel(object):
 
 
     def load_weights(self, file_path):
-        self.net.load_state_dict(torch.load(file_path))
+        self.net.load_state_dict(torch.load(file_path, map_location=self.device))
 
 
     def test(self):
