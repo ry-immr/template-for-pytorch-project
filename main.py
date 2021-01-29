@@ -1,6 +1,6 @@
 import os
 import argparse
-import numpy
+import numpy as np
 import torch
 import torchvision
 import yaml
@@ -36,7 +36,7 @@ def main():
 
     kwargs = {'num_workers': 0, 'pin_memory': True} if use_cuda else {}
 
-    numpy.random.seed(config['seed'])
+    np.random.seed(config['seed'])
     torch.manual_seed(config['seed'])
 
     # preprocessing 
