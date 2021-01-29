@@ -8,9 +8,9 @@ import torch.nn.functional as F
 class MyNetwork(nn.Module):
     def __init__(self):
         super(MyNetwork, self).__init__()
+        self.p = nn.Parameter(torch.zeros((1)))
 
 
     def forward(self, x):
-        pass
-
-
+        x = self.p * x
+        return x

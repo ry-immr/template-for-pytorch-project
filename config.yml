@@ -2,7 +2,14 @@ no_cuda: False
 
 seed: 1
 
-epochs: 50
-lr: 0.001
+model:
+    epochs: 50
+    lr: 0.001
 
-batch_size: 32
+    weights_dir: weights
+
+dataset:
+    train:
+        batch_size: 32
+    test:
+        batch_size: 32

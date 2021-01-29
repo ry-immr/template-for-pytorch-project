@@ -20,7 +20,7 @@ def check_yml(d):
 def main():
     parser = argparse.ArgumentParser(description='Project Name')
     parser.add_argument('mode', nargs="?",
-                        choices=["train", "test", "visualize"])
+                        choices=["train", "retrain", "test", "visualize"])
     parser.add_argument('yml', nargs='?',
                         help='yml file name')
 
@@ -47,22 +47,29 @@ def main():
     test_dataset = datasets.MyDataset(transform = transform)
 
     train_loader = torch.utils.data.DataLoader(
-        train_dataset, batch_size=config['batch_size'], shuffle=True, drop_last=True, **kwargs)
+        train_dataset, batch_size=config['dataset']['train']['batch_size'], shuffle=True, drop_last=True, **kwargs)
     test_loader = torch.utils.data.DataLoader(
-        test_dataset, batch_size=config['batch_size'], shuffle=False, **kwargs)
+        test_dataset, batch_size=config['dataset']['test']['batch_size'], shuffle=False, **kwargs)
 
-    model = models.MyModel(device = device, train_loader = train_loader, test_loader = test_loader)
+    model = models.MyModel(device = device, train_loader = train_loader, test_loader = test_loader, config = config['model'])
 
     if args.mode=='train':
-        model.train(epochs = config['epochs'], lr=config['lr'])
+        model.train()
+
+
+    elif args.mode=='train':
+        model.load_weights()
+        model.train()
 
 
     elif args.mode=='test':
-        pass
+        model.load_weights()
+        model.test()
 
 
     elif args.mode=='visualize':
-        pass
+        model.load_weights()
+        model.visualize()
 
 
 if __name__ == '__main__':
