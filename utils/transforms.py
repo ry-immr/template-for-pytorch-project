@@ -34,7 +34,8 @@ def func_rf(img, p):
 class RotateFlip(object):
     def __call__(self, sample):
         p = torch.randint(0,8,(1,))
-        return {k: func_rf(sample[k], p) for k in sample}
+        sample['img'] = func_rf(sample['img'], p)
+        return sample
 
 
 def to_tensor(img):
