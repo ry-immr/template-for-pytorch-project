@@ -6,7 +6,7 @@ import torch
 
 class MyDataset(torch.utils.data.Dataset):
     def __init__(self, transform=None):
-        self.dataset = [[0, 0]]
+        self.dataset = [[np.array([0,]), np.array([0,])]]
 
         self.transform = transform
 
