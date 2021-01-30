@@ -40,7 +40,7 @@ class MyModel(object):
 
                         pbar2.set_postfix(loss = loss.item())
 
-                pbar1.set_postfix(val_loss = 0)
+                pbar1.set_postfix(val_loss = self.calc_val_loss())
                 self.save_weights(self.config['weights_dir'])
 
 
@@ -67,6 +67,20 @@ class MyModel(object):
         state = torch.load(weights_path, map_location=self.device)
         self.net.load_state_dict(state['weights'])
         self.optimizer.load_state_dict(state['optimizer'])
+
+
+    def calc_val_loss(self):
+        self.net.eval()
+        losses = []
+        with torch.no_grad():
+            for batch_idx, sample in enumerate(self.test_loader):
+                img, label = sample['img'].to(self.device), sample['label'].to(self.device)
+
+                output = self.net(img)
+                loss = 0
+
+                losses.append(loss)
+        return np.mean(losses)
 
 
     def test(self):
