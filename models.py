@@ -10,7 +10,6 @@ import nets
 
 class MyModel(object):
     def __init__(self, device, train_loader, test_loader, config):
-        super(MyModel, self).__init__()
         self.device = device
         self.train_loader = train_loader
         self.test_loader = test_loader
