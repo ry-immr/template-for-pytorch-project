@@ -17,10 +17,10 @@ class MyModel(object):
 
         self.net = nets.MyNetwork().to(self.device)
 
-        self.optimizer = torch.optim.Adam(self.net.parameters(), lr=config['lr'])
+        self.optimizer = torch.optim.Adam(self.net.parameters(), lr=config['training']['lr'])
 
     def train(self):
-        with tqdm(range(1, self.config['epochs']+1), desc='training') as pbar1:
+        with tqdm(range(1, self.config['training']['epochs']+1), desc='training') as pbar1:
             for epoch in pbar1:
                 with tqdm(enumerate(self.train_loader), desc='iterating') as pbar2:
                     for batch_idx, sample in pbar2:

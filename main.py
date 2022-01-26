@@ -55,7 +55,7 @@ def main():
     test_loader = torch.utils.data.DataLoader(
         test_dataset, batch_size=config['dataset']['test']['batch_size'], shuffle=False, **kwargs)
 
-    model = models.MyModel(device = device, train_loader = train_loader, test_loader = test_loader, config = config['model'])
+    model = models.MyModel(device = device, train_loader = train_loader, test_loader = test_loader, config = config)
 
     if args.mode=='train':
         model.train()
