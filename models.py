@@ -16,7 +16,7 @@ class MyModel(object):
         self.config = config
 
         self.net = nets.MyNetwork().to(self.device)
-        if device == 'cuda':
+        if device == torch.device('cuda'):
             self.net = torch.nn.DataParallel(self.net)
 
         self.optimizer = torch.optim.Adam(self.net.parameters(), lr=config['training']['lr'])
