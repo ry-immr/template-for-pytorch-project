@@ -1,6 +1,7 @@
 import os
 import argparse
 import numpy as np
+import random
 import torch
 import torchvision
 import yaml
@@ -36,8 +37,11 @@ def main():
 
     kwargs = {'num_workers': 0, 'pin_memory': True} if use_cuda else {}
 
+    random.seed(config['seed'])
     np.random.seed(config['seed'])
     torch.manual_seed(config['seed'])
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
 
     # preprocessing 
     transform = torchvision.transforms.Compose([
