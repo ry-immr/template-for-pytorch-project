@@ -35,7 +35,7 @@ def main():
     use_cuda = not config['no_cuda'] and torch.cuda.is_available()
     device = torch.device('cuda' if use_cuda else 'cpu')
 
-    kwargs = {'num_workers': 0, 'pin_memory': True} if use_cuda else {}
+    kwargs = {'num_workers': os.cpu_count(), 'pin_memory': True} if use_cuda else {}
 
     random.seed(config['seed'])
     np.random.seed(config['seed'])
