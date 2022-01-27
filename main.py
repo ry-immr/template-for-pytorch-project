@@ -61,7 +61,7 @@ def main():
         model.train()
 
 
-    elif args.mode=='train':
+    elif args.mode=='retrain':
         model.load_weights()
         model.train()
 
